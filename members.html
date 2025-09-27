@@ -46,22 +46,55 @@
 	<a href="index.html" class="nav-link">Back to Home</a>
 	<div class="center-content">
 		<h1>Members Page</h1>
-		<div style="margin-top: 2rem; display: flex; flex-direction: row; gap: 3rem; justify-content: center; align-items: flex-start;">
-			<div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
-				<h2 style="font-size: 1.5rem; font-weight: 600; margin: 0 0 0.7rem 0;">Leader</h2>
-				<div>Morty</div>
-			</div>
-			<div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
-				<h2 style="font-size: 1.3rem; font-weight: 500; margin: 0 0 0.7rem 0;">Officer</h2>
-				<div>Dan</div>
-			</div>
-			<div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
-				<h2 style="font-size: 1.1rem; font-weight: 400; margin: 0 0 0.7rem 0;">Member</h2>
-				<div>Kyle</div>
-				<div>Alex</div>
-				<div>Keller</div>
-			</div>
-		</div>
+		<div id="members-row" style="margin-top: 2rem; display: flex; flex-direction: row; gap: 3rem; justify-content: center; align-items: flex-start;"></div>
+		<script>
+			// Data for each group
+			const membersData = [
+				{
+					title: 'Leader',
+					names: ['Morty']
+				},
+				{
+					title: 'Officer',
+					names: ['Dan']
+				},
+				{
+					title: 'Member',
+					names: ['Kyle', 'Alex', 'Keller']
+				}
+			];
+			// Sort names alphabetically for each group
+			membersData.forEach(group => group.names.sort((a, b) => a.localeCompare(b)));
+			// Render columns
+			const row = document.getElementById('members-row');
+			membersData.forEach(group => {
+				const col = document.createElement('div');
+				col.style.display = 'flex';
+				col.style.flexDirection = 'column';
+				col.style.alignItems = 'center';
+				col.style.minWidth = '120px';
+				let h2 = document.createElement('h2');
+				h2.textContent = group.title;
+				if (group.title === 'Leader') {
+					h2.style.fontSize = '1.5rem';
+					h2.style.fontWeight = '600';
+				} else if (group.title === 'Officer') {
+					h2.style.fontSize = '1.3rem';
+					h2.style.fontWeight = '500';
+				} else {
+					h2.style.fontSize = '1.1rem';
+					h2.style.fontWeight = '400';
+				}
+				h2.style.margin = '0 0 0.7rem 0';
+				col.appendChild(h2);
+				group.names.forEach(name => {
+					let div = document.createElement('div');
+					div.textContent = name;
+					col.appendChild(div);
+				});
+				row.appendChild(col);
+			});
+		</script>
 	</div>
 </body>
 </html>
