@@ -9,8 +9,8 @@
 		body {
 			height: 100vh;
 			margin: 0;
-			background: #18181b;
-			color: #fff;
+			background: #49525a;
+			color: #18181b;
 			font-family: 'Segoe UI', Arial, sans-serif;
 		}
 		.nav-link {
@@ -36,27 +36,75 @@
 			justify-content: center;
 		}
 		h1 {
-			font-size: 2.2rem;
+			font-size: 3.2rem;
 			font-weight: 700;
 			margin-bottom: 2rem;
+		}
+		/* Sparkly text styles */
+		.sparkly-gold {
+			background: linear-gradient(90deg, #fffbe6 10%, #ffd700 40%, #fffbe6 60%, #ffd700 90%);
+			color: #ffd700;
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-shadow: 0 0 8px #fffbe6, 0 0 4px #ffd700, 0 0 2px #fffbe6;
+			font-size: 2.2rem;
+		}
+		.sparkly-red {
+			background: linear-gradient(90deg, #fff0f0 10%, #ff3b3b 40%, #fff0f0 60%, #ff3b3b 90%);
+			color: #ff3b3b;
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-shadow: 0 0 8px #fff0f0, 0 0 4px #ff3b3b, 0 0 2px #fff0f0;
+			font-size: 2.1rem;
+		}
+		.sparkly-blue {
+			background: linear-gradient(90deg, #e6f0ff 10%, #4169e1 40%, #e6f0ff 60%, #4169e1 90%);
+			color: #4169e1;
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-shadow: 0 0 8px #e6f0ff, 0 0 4px #4169e1, 0 0 2px #e6f0ff;
+			font-size: 2.05rem;
 		}
 	</style>
 </head>
 <body>
+	<h1 style="text-align:center; margin-top:2.5rem; margin-bottom:0.5rem; font-size:2.2rem; font-weight:700;">Members Page</h1>
 	<a href="index.html" class="nav-link">Back to Home</a>
-	<div class="center-content">
-		<h1>Members Page</h1>
-		<div id="members-row" style="margin-top: 2rem; display: flex; flex-direction: row; gap: 3rem; justify-content: center; align-items: flex-start;"></div>
+	<div class="center-content" style="height: 80vh; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2.5rem;">
+		<div style="width:100%; display:flex; flex-direction:column; align-items:center;">
+			<h2 style="font-size:2.7rem; font-weight:600; letter-spacing:1px; margin-top:1.5rem; margin-bottom:1.2rem; text-align:center; color:#4169e1;">Discord</h2>
+			<div style="display:flex; flex-direction:row; gap:2.2rem; justify-content:center;">
+				<div style="display:flex; flex-direction:column; align-items:center; min-width:70px;">
+					<h3 class="sparkly-gold" style="font-size:2.2rem; font-weight:500; margin:0 0 0.2rem 0; color: #ffd700;">Owner</h3>
+					<div>Morty</div>
+				</div>
+				<div style="display:flex; flex-direction:column; align-items:center; min-width:70px;">
+					<h3 class="sparkly-red" style="font-size:2.1rem; font-weight:400; margin:0 0 0.2rem 0; color: #2a0303;">Admin</h3>
+					<div>Zanya</div>
+				</div>
+				<div style="display:flex; flex-direction:column; align-items:center; min-width:70px;">
+					<h3 class="sparkly-blue" style="font-size:2.05rem; font-weight:400; margin:0 0 0.2rem 0;">Mod</h3>
+					<div>Prism</div>
+				</div>
+			</div>
+		</div>
+		<div style="width:100%; display:flex; flex-direction:column; align-items:center; margin-top:2.5rem;">
+			<h2 style="text-align:center; margin-bottom:1.2rem; font-size:2.7rem; font-weight:600; letter-spacing:1px; color:#228B22;">Guild</h2>
+			<div id="guild-row" style="margin-top: 0; display: flex; flex-direction: row; gap: 3rem; justify-content: center; align-items: flex-start;"></div>
+		</div>
 		<script>
-			// Data for each group
-			const membersData = [
+			// Data for each group under Guild
+			const guildData = [
 				{
 					title: 'Leader',
 					names: ['Morty']
 				},
 				{
 					title: 'Officer',
-					names: ['Wan']
+					names: ['Wan', 'Zanya']
 				},
 				{
 					title: 'Master Refiner',
@@ -64,14 +112,14 @@
 				},
 				{
 					title: 'Member',
-					names: ['Zayna', 'Sarene', 'Bargroph', 'Dante']
+					names: ['Sarene', 'Bargroph', 'Dante']
 				}
 			];
 			// Sort names alphabetically for each group
-			membersData.forEach(group => group.names.sort((a, b) => a.localeCompare(b)));
-			// Render columns
-			const row = document.getElementById('members-row');
-			membersData.forEach(group => {
+			guildData.forEach(group => group.names.sort((a, b) => a.localeCompare(b)));
+			// Render columns under Guild
+			const guildRow = document.getElementById('guild-row');
+			guildData.forEach(group => {
 				const col = document.createElement('div');
 				col.style.display = 'flex';
 				col.style.flexDirection = 'column';
@@ -82,12 +130,31 @@
 				if (group.title === 'Leader') {
 					h2.style.fontSize = '1.5rem';
 					h2.style.fontWeight = '600';
+					h2.style.color = 'red';
 				} else if (group.title === 'Officer') {
 					h2.style.fontSize = '1.3rem';
 					h2.style.fontWeight = '500';
+					h2.style.background = 'linear-gradient(90deg, #228B22 30%, #ffd700 70%)';
+					h2.style.backgroundClip = 'text';
+					h2.style.webkitBackgroundClip = 'text';
+					h2.style.color = 'transparent';
+					h2.style.webkitTextFillColor = 'transparent';
+				} else if (group.title === 'Master Refiner') {
+					h2.style.fontSize = '1.2rem';
+					h2.style.fontWeight = '500';
+					h2.style.background = 'linear-gradient(90deg, #228B22 30%, #ff3b3b 70%)';
+					h2.style.backgroundClip = 'text';
+					h2.style.webkitBackgroundClip = 'text';
+					h2.style.color = 'transparent';
+					h2.style.webkitTextFillColor = 'transparent';
 				} else {
 					h2.style.fontSize = '1.1rem';
 					h2.style.fontWeight = '400';
+					h2.style.background = 'linear-gradient(90deg, #228B22 30%, #111 70%)';
+					h2.style.backgroundClip = 'text';
+					h2.style.webkitBackgroundClip = 'text';
+					h2.style.color = 'transparent';
+					h2.style.webkitTextFillColor = 'transparent';
 				}
 				h2.style.margin = '0 0 0.7rem 0';
 				col.appendChild(h2);
@@ -96,7 +163,7 @@
 					div.textContent = name;
 					col.appendChild(div);
 				});
-				row.appendChild(col);
+				guildRow.appendChild(col);
 			});
 		</script>
 	</div>
