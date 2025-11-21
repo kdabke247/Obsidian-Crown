@@ -1,0 +1,272 @@
+/* External stylesheet for The Obsidian Crown website.
+    This file provides all styling for the website without using any frameworks.
+    It is written to be as clear as possible for a beginner.
+*/
+
+/* 1. Base Styles & Colors */
+/* These rules apply to the whole page */
+body {
+    font-family: 'Inter', sans-serif; /* Sets the default font */
+    background-color: #18181b;       /* Dark background color */
+    color: #ffffff;                  /* White text color */
+    margin: 0;                       /* Removes default browser margin */
+    padding: 0;                      /* Removes default browser padding */
+    
+    /* These 3 properties work together to make the footer stick to the bottom */
+    display: flex;
+    flex-direction: column; /* Arranges children (header, main, footer) vertically */
+    min-height: 100vh;      /* Makes the body at least the full height of the screen */
+}
+
+/* Sets the font for all headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    color: #2f27ce; /* Primary blue color */
+}
+
+/* This makes the <main> content area grow to fill available space */
+main {
+    flex-grow: 1; 
+}
+
+/* This is our main layout class. It centers content and adds padding. */
+.container {
+    width: 90%;               /* Content takes up 90% of the screen */
+    max-width: 1024px;        /* ...but no wider than 1024px */
+    margin: 0 auto;           /* Centers the container horizontally (0 top/bottom, auto left/right) */
+    padding: 20px 0;          /* 20px padding on top/bottom, 0 on left/right */
+}
+
+
+/* 2. Header and Navigation */
+header {
+    background-color: #27272a; /* Slightly lighter dark background */
+    padding: 20px 0;
+    border-bottom: 2px solid #433bff; /* Accent color border */
+}
+
+/* This class uses flexbox to align header items in a row */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Puts space between items (logo on left, nav on right) */
+    align-items: center;            /* Aligns items vertically in the center */
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none; /* Removes underline from the link */
+}
+
+/* Styles for the navigation links in the header */
+.nav-link {
+    font-size: 18px;
+    font-weight: 600;
+    color: #dedcff; /* Light secondary color */
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+/* This is what happens when you hover over a nav link */
+.nav-link:hover {
+    color: #433bff; /* Accent color */
+    text-decoration: underline;
+}
+
+/* This class marks the current page's link */
+.nav-link.active {
+    color: #433bff; /* Accent color */
+}
+
+/* Mobile Menu Styles */
+/* REMOVED .mobile-menu-button styles */
+
+.mobile-menu {
+    display: none; /* Hide the mobile menu itself by default */
+    width: 100%;
+    background-color: #27272a;
+}
+
+/* The mobile menu links are stacked vertically */
+.mobile-menu .nav-link {
+    display: block; /* Makes the link take up the full width */
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #52525b;
+}
+
+/* This is a "Media Query". These styles ONLY apply on screens 768px wide or less. */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none; /* Hide the desktop nav */
+    }
+    .mobile-menu-button {
+        /* This style is no longer needed */
+    }
+    .mobile-menu {
+        display: block; /* Show the mobile menu links */
+    }
+    .header-container {
+        /* On mobile, we need to add padding to the container */
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+
+/* 3. Main Content Styles */
+.page-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 18px;
+    color: #dedcff;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #433bff;
+    padding-bottom: 5px;
+}
+
+/* Video styles */
+.video-container {
+    max-width: 800px;
+    margin: 20px auto; /* Center the video container */
+    box-shadow: 0 0 25px #433bff;
+    border-radius: 8px;
+    overflow: hidden; /* Keeps the video inside the rounded corners */
+}
+.video {
+    width: 100%; /* Make the video fill its container */
+    display: block;
+}
+
+
+/* 4. Table Styles (Roster Page) */
+.table-container {
+    overflow-x: auto; /* Adds a horizontal scrollbar if the table is too wide */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Merges cell borders */
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #52525b;
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #3f3f46;
+}
+tr:nth-child(even) { /* Styles every "even" row (2nd, 4th, etc.) */
+    background-color: #27272a;
+}
+
+
+/* 5. Form Styles (Join Us Page) */
+.join-form {
+    max-width: 600px;
+    margin: 30px auto; /* Centers the form */
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.form-input {
+    width: 100%;
+    padding: 12px;
+    background-color: #27272a;
+    border: 1px solid #52525b;
+    color: #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+.btn {
+    background-color: #2f27ce;
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #433bff;
+}
+
+
+/* 6. Event Card Styles (Events Page) */
+.event-grid {
+    display: grid;
+    /* This creates a 2-column grid on desktop */
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* Space between cards */
+}
+.event-card {
+    background-color: #27272a;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #2f27ce;
+}
+.card-title {
+    font-size: 20px;
+    color: #433bff;
+    margin-top: 0;
+}
+.card-subtitle {
+    font-size: 14px;
+    color: #dedcff;
+    margin-bottom: 10px;
+}
+.gemini-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* On mobile, stack the event cards in a single column */
+@media (max-width: 768px) {
+    .event-grid {
+        grid-template-columns: 1fr; /* 1 column */
+    }
+}
+
+
+/* 7. Footer Styles */
+footer {
+    background-color: #27272a;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px; /* Pushes footer away from main content */
+    color: #dedcff;
+    border-top: 1px solid #52525b;
+}
+.footer-links {
+    margin-top: 10px;
+}
+.footer-links a {
+    color: #433bff;
+    text-decoration: none;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+.footer-separator {
+    margin: 0 10px;
+}
